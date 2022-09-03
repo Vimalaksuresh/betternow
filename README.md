@@ -1,0 +1,2 @@
+# betternow
+django project
