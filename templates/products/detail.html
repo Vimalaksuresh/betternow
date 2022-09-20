@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+    <div class="col">
+      <div class="card shadow-sm mb-3">
+        <img src="{{product.image.url}}" alt="..." class="card-img-top" />
+        <div class="card-body">
+          <h5 class="card-title">{{product.name}}</h5>
+          <p class="card-text">{{product.price}}</p>
+          <p class="card-text">{{course.description}}</p>
+          <p class="card-text">{{product.private}}</p>
+          <p class="card-text">{{product.unit}}</p>
+          <p class="card-text">Created by: {{product.user}}</p>
+          <p class="card-text text-muted fst-italic">
+            Last Updated on: {{product.updated_on|date}}
+          </p>
+
+          <div class="text-left">
+            
+            {% if is_addtocart %}
+
+            <a role="button" class="btn btn-primary disabled">addedtocart</a>
+            {% else %}
+
+            <form action="#" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="product_id" value="{{product.id}}" />
+              <button class="btn btn-primary">Add To Cart</button>
+            </form>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

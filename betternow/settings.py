@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from telnetlib import AUTHENTICATION
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,6 +43,10 @@ INSTALLED_APPS = [
     # LOCAL APPS
     "user",
     "master",
+    "product",
+    "customer",
+    "social_django",
+   
 ]
 
 MIDDLEWARE = [
@@ -66,10 +72,26 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "social_django.context_processors.backends",
+                "social_django.context_processors.login_redirect",
+
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS =(
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+
+
+    
+    
+)
+
 
 WSGI_APPLICATION = "betternow.wsgi.application"
 
@@ -132,5 +154,27 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+
 #custom properties
 AUTH_USER_MODEL = "user.User"
+
+
+# Message tags
+MESSAGE_TAGS = {
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.ERROR: 'danger',
+    messages.WARNING: 'warning',
+}
+
+LOGIN_URL = "login"
+LOGOUT_URL = "logout"
+LOGIN_REDIRECT_URL = "master:home"
+LOGOUT_REDIRECT_URL = "master:home"
+
+SOCIAL_AUTH_GITHUB_KEY = '9932521a21d719914918'
+SOCIAL_AUTH_GITHUB_SECRET='career@camerinfolks.com'
+
+
+
+#custom properties

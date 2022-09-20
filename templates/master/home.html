@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block title %}Home{% endblock %} {% block content%}
+{% load static%}
+<nav>
+  <!-- <ul>
+        <li><a href="{% url 'master:home' %}">Home</a></li>
+        <li><a href="{% url 'master:about' %}">About</a></li>
+        <li><a href="{% url 'master:contact' %}">Contact Us</a></li>
+        <li><a href="{% url 'master:login' %}">Login</a></li>
+
+
+
+    </ul> -->
+  <div class="intro">
+    <br /><br /><br />
+    <br /><br /><br />
+    <br>
+    <h1 class="text-big">Better When It's On You</h1>
+    <br /><br /><br />
+    <a href="#" class="btn">SHOP NOW</a>
+  </div>
+</nav>
+
+<section class="min-vh-100" id="signup">
+  <div class="container h-100">
+    <br><br>
+    <div class="row sticky-top bg-white">
+      <div class="col py-3">
+        <h2>Sign Up</h2>
+        <div class="hr"></div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <form action="" method="post">
+              {% csrf_token %} {{form.as_p}}
+              <button class="btn btn-primary">Signup</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
