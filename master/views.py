@@ -9,9 +9,11 @@ from customer.models import Customer
 from product.models import ProductModel
 from user.models import Profile
 from django.http import HttpResponse
+from django.core.mail import send_mail
+from master.forms import FeedbackForm
 
-
-
+from django.contrib.auth.views import PasswordResetView
+from django.contrib.messages.views import SuccessMessageMixin
 
 
 
@@ -33,6 +35,8 @@ def contact_view(request):
 def login_view(request):
     template_name = "master/login.html"
     return render(request, template_name)
+
+
 
 
 # class based view
@@ -60,3 +64,25 @@ class DashboardView(views.View):
     #     return context
 
 
+class FeedbackView(views.FormView):
+    template_name = "master/feedback.html"
+    form_class = FeedbackForm
+    success_url = reverse_lazy("master:home")
+
+    def from_valid(self, form):
+        data = form.cleaned_data
+        subject = "Thankyou for your valuable feedback!"
+        message = f"""
+        Hi {data.get("name")},
+        
+        This is an auto generated mail.we will reach you soon.
+        
+        Thanks and Regards,
+        Learning Team
+        """
+        from_mail = settings.EMAIL_HOST_USER
+        to_mail =[
+            data.get("email"),
+        ]
+        send_mail(subject=subject, message=message, from_mail=from_mail, recipient_list=to_mail)
+        return super().form_valid(form)

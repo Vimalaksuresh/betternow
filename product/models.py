@@ -3,6 +3,8 @@ from django.db import models
 from master.models import TimeStamp
 from django.db.models import F, Count, Sum
 
+from customer.models import Customer
+
 
 
 USER = get_user_model()

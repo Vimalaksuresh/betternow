@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-from telnetlib import AUTHENTICATION
+
 from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     "master",
     "product",
     "customer",
-    "social_django",
+   
+    
    
 ]
 
@@ -72,25 +73,25 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "social_django.context_processors.backends",
-                "social_django.context_processors.login_redirect",
+                # "social_django.context_processors.backends",
+                # "social_django.context_processors.login_redirect",
 
             ],
         },
     },
 ]
 
-AUTHENTICATION_BACKENDS =(
-    'social_core.backends.github.GithubOAuth2',
-    'social_core.backends.twitter.TwitterOAuth',
-    'social_core.backends.facebook.FacebookOAuth2',
+# AUTHENTICATION_BACKENDS =(
+#     'social_core.backends.github.GithubOAuth2',
+#     'social_core.backends.twitter.TwitterOAuth',
+#     'social_core.backends.facebook.FacebookOAuth2',
 
-    'django.contrib.auth.backends.ModelBackend',
+#     'django.contrib.auth.backends.ModelBackend',
 
 
     
     
-)
+# )
 
 
 WSGI_APPLICATION = "betternow.wsgi.application"
@@ -159,22 +160,34 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "user.User"
 
 
-# Message tags
-MESSAGE_TAGS = {
-    messages.INFO: 'info',
-    messages.SUCCESS: 'success',
-    messages.ERROR: 'danger',
-    messages.WARNING: 'warning',
-}
+# # Message tags
+# MESSAGE_TAGS = {
+#     messages.INFO: 'info',
+#     messages.SUCCESS: 'success',
+#     messages.ERROR: 'danger',
+#     messages.WARNING: 'warning',
+
 
 LOGIN_URL = "login"
 LOGOUT_URL = "logout"
 LOGIN_REDIRECT_URL = "master:home"
 LOGOUT_REDIRECT_URL = "master:home"
 
-SOCIAL_AUTH_GITHUB_KEY = '9932521a21d719914918'
-SOCIAL_AUTH_GITHUB_SECRET='career@camerinfolks.com'
+# SOCIAL_AUTH_GITHUB_KEY = '9932521a21d719914918'
+# SOCIAL_AUTH_GITHUB_SECRET='career@camerinfolks.com'
 
+
+# EMAIL INTEGRATION PARAMETERS ##################
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = "sent_emails"
+
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "betternow.vimala@gmail.com"
+EMAIL_HOST_PASSWORD = "bacardi@123"
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = True
 
 
 #custom properties

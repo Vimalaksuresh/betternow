@@ -19,15 +19,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path("", include('master.urls', namespace='master')),
-    path("user/", include('user.urls', namespace='user')),
-    path("product/", include('product.urls', namespace='product')),
-    # path("customer/", include('customer.urls', namespace='customer')),
+    path("", include("master.urls", namespace="master")),
+    path("user/", include("user.urls", namespace="user")),
+    path("product/", include("product.urls", namespace="product")),
     path("accounts/", include("django.contrib.auth.urls")),
-
     path("admin/", admin.site.urls),
-    path('oauth/',include('social_django.urls',namespace='social')),
-    
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,0 +1,64 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+  <div
+    class="row row-cols-lg-3 g-2 g-lg-3 justify-content-center align-items-center py-5"
+  >
+    {% for customer in customers %}
+    <div class="col">
+      <div class="card shadow-sm mb-3">
+        <!-- <img src="{{course.image.url}}" alt="..." class="card-img-top" /> -->
+        <div class="card-body">
+          <h5 class="card-title">{{customer.name}}</h5>
+          <p class="card-text">{{customer.gender}}</p>
+          <p class="card-text">{{customer.age}}</p>
+          <p class="card-text">{{customer.dob}}</p>
+          <p class="card-text">{{customer.phone}}</p>
+          <p class="card-text">{{customer.address}}</p>
+          <div class="link-group">
+            <ul class="list-group list-group-flush list-group-horizontal">
+              {% if customer.user == user %}
+
+              <li class="list-group-item">
+                <a
+                  href="{% url 'customer:update' customer.id %}"
+                  class="btn btn-info"
+                  >Update</a
+                >
+              </li>
+              <li class="list-group-item">
+                <a
+                  href="{% url 'customer:delete' customer.id %}"
+                  class="btn btn-danger"
+                  >Delete</a
+                >
+              </li>
+              {% endif %}
+
+             
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <div class="col">
+      <div class="card shadow-sm mb-3">
+        <!-- <img src="{{course1.image.url}}" alt="..." class="card-img-top" /> -->
+        <div class="card-body">
+          <h5 class="card-title">Nothing to show!</h5>
+          <h5 class="card-title">{{customer.name}}</h5>
+          <p class="card-text">{{customer.gender}}}</p>
+          <p class="card-text">{{customer.age}}</p>
+          <p class="card-text">{{customer.dob}}</p>
+          <p class="card-text">{{customer.phone}}</p>
+          <p class="card-text">{{customer.address}}</p>
+          <!-- <div>
+            <a href="#" class="btn btn-primary">I want to learn</a>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

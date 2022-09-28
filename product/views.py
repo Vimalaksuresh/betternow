@@ -50,7 +50,7 @@ class ProductCreateView(views.CreateView):
 class ProductListView(views.ListView):
     template_name = "product/list.html"
     model = ProductModel
-    context_object_name = "products"
+    context_object_name = "product"
 
     def get_queryset(self):
         qs = ProductModel.objects.filter(status=True)

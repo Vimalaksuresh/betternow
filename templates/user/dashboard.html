@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}dashboard{% endblock %}
+{% block content %}
+
+<h1>Contact Us</h1>
+<div class="container">
+    <div style="text-align:center">
+      <h2>Dashboard</h2>
+      <p>leave us a message:</p>
+    </div>
+    <div class="row">
+      <div class="col">
+        {{Products}}
+        {{profile}}
+        {{user.user}}
+      </div>
+    </div>
+  </div> 
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}contact{% endblock %}
+{% block content %}
+{% load static %}
+<section class="background">
+<h1>Feedback</h1>
+<div class="container">
+    <div style="text-align:center">
+      <h2>Contact Us</h2>
+      <p>leave us a message:</p>
+    </div>
+    <div class="row">
+      <!-- <div class="col-md-4">
+        <img src="{% static 'imgs/location.jpg' %}"style="width:100%">
+      </div> -->
+      <div class="column">
+        <form action="" method="post">
+          {% csrf_token %}
+          {{form.as_p}}
+          <button class="btn btn-primary">Send Feedback</button>
+        </form>
+      </div>
+    </div>
+  </div> 
+</section>
+{% endblock %}

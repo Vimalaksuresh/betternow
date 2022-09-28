@@ -8,7 +8,7 @@ urlpatterns = [
     path("about/",views.about_view, name="about"),
     path("contact/",views.contact_view, name="contact"),
     path("login/", views.login_view, name="login"),
-    # path("dashboard/", views.DashboardView.as_view(), name="dashboard"),
+    path("feedback/", views.FeedbackView.as_view(), name="eedback"),
 
 
 
